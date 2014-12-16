@@ -2,24 +2,29 @@
 <html ng-app='CipherApp'>
 <head>
   <title>Cipher</title>
+  <style type="text/css" media="screen">
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
 </head>
 <body ng-controller='CipherController'>
   <input type='text' ng-model='encodeInput' ng-show='inputMode' ng-change='change(encodeInput)'/>
-  <input type='text' ng-model='decodeInput' ng-show='!inputMode' ng-change='change(decodeInput)'/>
+  <input ng-cloak type='text' ng-model='decodeInput' ng-show='!inputMode' ng-change='change(decodeInput)'/>
   <input type='text' ng-model='password' ng-change='updatePassword(password)'>
   <form id='mode'>
     <input name='mode' type='radio' ng-checked='inputMode' ng-click='inputMode=!inputMode'>encode</input>
     <input name='mode' type='radio' ng-checked='!inputMode' ng-click='inputMode=!inputMode'>decode</input>
   </form>
   <br>
-  <p ng-show='inputMode'>
+  <p ng-cloak ng-show='inputMode'>
     {{encodeInput}}  
   </p>
-  <p ng-show='!inputMode'>
+  <p ng-cloak ng-show='!inputMode'>
     {{decodeInput}}
   </p>
   <br>
-  <p>
+  <p ng-cloak>
     {{output}}
   </p>
 
