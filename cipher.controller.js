@@ -23,6 +23,7 @@
         return true;
       }
     }
+    
     function change(input) {
       if( $scope.check() ){
         if($scope.inputMode){
@@ -32,6 +33,7 @@
         }
       } 
     }
+
     function updatePassword() {
       if( $scope.check() ){
         CipherFactory.key = $scope.password.toLowerCase().split('');
