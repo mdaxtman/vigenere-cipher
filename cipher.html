@@ -8,24 +8,24 @@
     }
   </style>
 </head>
-<body ng-controller='CipherController'>
-  <input type='text' ng-model='encodeInput' ng-show='inputMode' ng-change='change(encodeInput)'/>
-  <input ng-cloak type='text' ng-model='decodeInput' ng-show='!inputMode' ng-change='change(decodeInput)'/>
-  <input type='text' ng-model='password' ng-change='updatePassword(password)'>
+<body ng-controller='CipherController as cipher'>
+  <input type='text' ng-model='cipher.encodeInput' ng-show='cipher.inputMode' ng-change='cipher.change(cipher.encodeInput)'/>
+  <input ng-cloak type='text' ng-model='cipher.decodeInput' ng-show='!cipher.inputMode' ng-change='cipher.change(cipher.decodeInput)'/>
+  <input type='text' ng-model='cipher.password' ng-change='cipher.updatePassword(cipher.password)'>
   <form id='mode'>
-    <input name='mode' type='radio' ng-checked='inputMode' ng-click='inputMode=!inputMode'>encode</input>
-    <input name='mode' type='radio' ng-checked='!inputMode' ng-click='inputMode=!inputMode'>decode</input>
+    <input name='mode' type='radio' ng-checked='cipher.inputMode' ng-click='cipher.inputMode=!cipher.inputMode'>encode</input>
+    <input name='mode' type='radio' ng-checked='!cipher.inputMode' ng-click='cipher.inputMode=!cipher.inputMode'>decode</input>
   </form>
   <br>
-  <p ng-cloak ng-show='inputMode'>
-    {{encodeInput}}  
+  <p ng-cloak ng-show='cipher.inputMode'>
+    {{cipher.encodeInput}}  
   </p>
-  <p ng-cloak ng-show='!inputMode'>
-    {{decodeInput}}
+  <p ng-cloak ng-show='!cipher.inputMode'>
+    {{cipher.decodeInput}}
   </p>
   <br>
   <p ng-cloak>
-    {{output}}
+    {{cipher.output}}
   </p>
 
   <script src="bower_components/angular/angular.min.js"></script>
