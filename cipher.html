@@ -25,46 +25,8 @@
 
   <script src="angular.min.js"></script>
   <script src="cipher.js"></script>
-  <script>  
-    angular.module('CipherApp', [])
-      .controller('CipherController', function($scope, CipherFactory){
-        $scope.inputMode = true;
-        $scope.password = CipherFactory.key.join('');
-        $scope.encodeInput = '';
-        $scope.output = '';
-        $scope.encode = CipherFactory.encode;
-        $scope.decode = CipherFactory.decode;
-        $scope.check = function(){
-          if($scope.password.length === 0){
-            $scope.output = 'please enter an encryption code';
-            return false;
-          }else{
-            return true;
-          }
-        };
-        $scope.change = function(i){
-          if($scope.check()){
-            if($scope.inputMode){
-              $scope.output = $scope.encode.call(CipherFactory, i);  
-            }else{
-              $scope.output = $scope.decode.call(CipherFactory, i);
-            }
-          }
-        };
-        $scope.updatePassword = function(){
-          if($scope.check()){
-            CipherFactory.key = $scope.password.toLowerCase().split('');
-            $scope.change($scope.encodeInput);
-          }
-        };
-      })
-
-      .factory('CipherFactory', function(){
-        var key = 'password';
-        var alpha = 'qo4u0i9xedy3bazwjgc7m1kp5fshr8ylv62n';
-        return new VigenereCipher(key, alpha);
-      });
-
-  </script>
+  <script src="cipher.app.js"></script>
+  <script src="cipher.controller.js"></script>
+  <script src="cipher.factory.js"></script>  
 </body>
 </html>
